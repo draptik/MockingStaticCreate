@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using FakeItEasy;
 using FluentAssertions;
+using MockingStaticCreate.App;
 using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.AutoFakeItEasy;
 using Xunit;
 
-namespace MockingStaticCreate
+namespace MockingStaticCreate.Tests
 {
-    public class SomeTests
+    public class SomeServiceTests
     {
         [Fact]
         public void HaveSameId_ForDifferentUsers_Should_ReturnFalse_UsingFakeItEasy()
@@ -68,42 +68,6 @@ namespace MockingStaticCreate
         {
             IFixture fixture = new Fixture().Customize(new AutoFakeItEasyCustomization());
             // ???
-        }
-    }
-
-
-    public class SomeService
-    {
-        /// <summary>
-        ///     Dummy method comparing read-only property
-        /// </summary>
-        public bool HaveSameId(User user1, User user2)
-        {
-            if (user1.Id == null) throw new ArgumentNullException("user1");
-            if (user2.Id == null) throw new ArgumentNullException("user2");
-            //if (!user1.Id.HasValue || !user2.Id.HasValue) return false;
-
-            return user1.Id.Value == user2.Id.Value;
-        }
-    }
-
-    public class User
-    {
-        private User()
-        {
-        }
-
-        /// <summary>
-        ///     Created by Database...
-        /// </summary>
-        public long? Id { get; protected set; }
-
-        public string Name { get; protected set; }
-
-        public static User Create(string name)
-        {
-            var user = new User {Name = name};
-            return user;
         }
     }
 }
