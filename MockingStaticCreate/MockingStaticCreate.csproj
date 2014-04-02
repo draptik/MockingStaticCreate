@@ -60,9 +60,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\Feedback.cs" />
     <Compile Include="App\SomeService.cs" />
     <Compile Include="App\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\FeedbackTests.cs" />
     <Compile Include="Tests\SomeServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
